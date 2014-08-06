@@ -36,3 +36,7 @@ bin
 # Capistrano configuration
 config/deploy.rb
 config/deploy/
+
+# Application themes
+web/app/themes/*
+!web/app/themes/.gitkeep

@@ -4,13 +4,6 @@ require 'capistrano/setup'
 # Includes default deployment tasks
 require 'capistrano/deploy'
 
-# Load tasks from gems
-require 'capistrano/composer'
-
-# Ref: http://github.com/bkeepers/dotenv
-require 'dotenv'
-Dotenv.load
-
 # Includes tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
