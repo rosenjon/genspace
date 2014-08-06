@@ -60,7 +60,8 @@
     "fancyguy/webroot-installer": "1.1.0",
     "composer/installers": "v1.0.12",
     "vlucas/phpdotenv": "~1.0.6",
-    "wpackagist-theme/twentyfourteen": "1.1"
+    "wpackagist-theme/twentyfourteen": "*",
+    "wpackagist-theme/twentythirteen": "*"
   },
   "extra": {
     "installer-paths": {
