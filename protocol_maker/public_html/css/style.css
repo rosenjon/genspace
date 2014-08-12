@@ -1,0 +1,806 @@
+/*
+
+Eric Fernandez
+Bioglypics Project
+GENSPACE IGEM TEAM 2014
+
+*/
+
+body {
+	font-family: arial;
+	margin: 0px;
+	overflow-x: scroll;
+	counter-reset: Serial;           /* Set the Serial counter to 0 */
+}
+
+/* DIV objects */
+
+.headline {
+	display:block;
+  width: auto;
+  height: auto;
+  font-family: Helvetica;
+	outline: 0;
+	font-size: 4em;
+	font-weight: 700;
+	text-align: left;
+	color: rgb(0, 0, 0);
+	border-bottom: 8px solid rgb(247, 247, 247);
+	
+}
+
+.pipette {
+  display:block;
+  width: 80px;
+  height: 80px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  position:static;
+  z-index: 0;
+  background: url('pipette.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 0px;
+  background-position: center;
+  vertical-align: middle;
+  
+}
+
+
+.test_tube {
+  display:block;
+  width: 80px;
+  height: 80px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  position:static;
+  z-index: 0;
+  background: url('2ml_tube1.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 0px;
+  background-position: center;
+  vertical-align: middle;
+  
+}
+
+.large_tube {
+  display:block;
+  width: 80px;
+  height: 80px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  position:static;
+  z-index: 0;
+  background: url('largetube.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 0px;
+  background-position: center;
+  vertical-align: middle;
+  
+}
+
+.petri {
+  display:block;
+  width: 80px;
+  height: 80px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  position:static;
+  z-index: 0;
+  background: url('petri.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 0px;
+  background-position: center;
+  vertical-align: middle;
+}
+
+.igem {
+  display:block;
+  width: 80px;
+  height: 80px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  position:static;
+  z-index: 0;
+  background: url('igem.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 0px;
+  background-position: center;
+  vertical-align: middle;
+}
+
+
+.pipette_placeholder {
+  opacity: 0.1;
+  background: url('pipette.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 0px;
+  background-position: center;
+  vertical-align: middle;
+  
+}
+
+
+.centrifuge {
+  display:block;
+  width: 80px;
+  height: 80px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  position:static;
+  z-index: 0;
+  background: url('centrifuge.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 0px;
+  background-position: center;
+  vertical-align: middle;
+}
+
+.shake {
+  display:block;
+  width: 80px;
+  height: 80px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  position:static;
+  z-index: 0;
+  background: url('shake.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 0px;
+  background-position: center;
+  vertical-align: middle;
+}
+
+._input_condition {
+	display: block;
+	position: relative;
+	border-style: solid;
+	border-width: 0px;
+	z-index: 1;
+	width: 90px;
+	height: 20px;
+	margin-top: auto; 
+	margin-bottom: auto;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: rgb(247, 247, 247);
+	font-family: Helvetica;
+	outline: 0;
+	font-size: 1.5em;
+	font-weight: 700;
+	text-align: center;
+	color: rgb(0, 0, 0);
+}
+
+/* drag container*/
+#drag {
+	border: 0px solid lightblue;
+	width: 90%;
+	height: 80%;
+	position:relative;
+	margin: auto;
+}
+		/* left container */
+		#drag #left {
+			float: left;
+			width: 100%;
+			height: 35%;
+			position: relative;
+			 overflow-x: scroll; /* has to be scroll, not auto */
+			-webkit-overflow-scrolling: touch;
+			
+			background-color: #FFFFFF;
+			
+
+		}
+		/* right container */
+		#drag #right {
+			display: table;
+		    table-layout: auto;
+		    float: left;
+		    display:inline;
+		    clear:both;
+		    width: 100%;
+		    height: 50%;
+		    position: relative;
+		    margin-left: auto;
+		    margin-right: auto;
+		    margin-top: auto;
+		    margin-bottom: auto;
+		     overflow-x: scroll; /* has to be scroll, not auto */
+		-webkit-overflow-scrolling: touch;
+		background-color: #FFFFFF;
+		  box-shadow: 0px 0px 0px 0px #fff;
+		    border-bottom: 60px solid #FFFFFF;
+			
+		}
+
+
+.drag {
+	text-align: center;
+}
+
+/* tables */
+div#drag table {
+	background-color: #eee;
+	border-collapse: collapse;
+	margin: 5px;
+}
+	/* table cells */
+	div#drag td {
+		
+		text-align: center;
+		font-size: 10pt;
+		padding: 0px;
+	}
+
+	table#table6 td {
+		vertical-align: middle;
+		background-color: rgb(240, 240, 240);
+		overflow-x: scroll; /* has to be scroll, not auto */
+		-webkit-overflow-scrolling: touch;
+		
+		
+	}
+	
+	table#table4 td {
+		vertical-align: middle;
+		width:40px;
+		overflow-x: scroll; /* has to be scroll, not auto */
+		-webkit-overflow-scrolling: touch;
+		
+		
+	}
+	
+
+/* message below tables */
+#message {
+	padding-left: 10px;
+	color: #6A93D4;
+	height: 100px;
+	padding-top: 10px;
+}
+
+/* single content cells (with clone objects on the left) */
+
+.icons {
+	background-color: rgb(245, 245, 245);
+	width: 100px;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: auto;
+	margin-left: auto;
+	vertical-align: middle;
+	position: relative;
+	border-right: 4px solid #FFFFFF;
+	
+}
+
+/* trash cell */
+.trash {
+	height: 50px;
+	font-size: 32px;
+	font-weight: 100;
+	text-align: left;
+	border-top: 0px solid #FFFFFF;
+	padding: 0;
+	color: #FFFFFF;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+	background: #2980b9;
+  border-bottom: 6px solid #2475ab;
+}
+
+
+/*.trash {
+	color: #FFFFFF;
+	background-color: SteelBlue;
+	text-align:center;
+	width: 400px;
+	height: 60px;
+	border: 4px solid #FFFFFF;
+	position: relative;
+}*/
+
+.trashtable {
+	width: 20%;
+	background-color: SteelBlue;
+}
+
+._input_material {
+  display:inline-block;
+  vertical-align:middle;
+  text-align: center;
+  height: 50px;
+  padding: 10px;
+  border: 0px solid rgb(119, 119, 119);
+  background-color: rgb(242, 242, 242);
+  font-family: Helvetica;
+  font-size: 1em;
+  font-weight: 100;
+  color: rgb(0, 0, 0);
+  resize: none;
+}
+
+._textarea {
+  display:inline-block;
+  vertical-align:middle;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 80%;
+  height: 80%;
+  text-align: center;
+  padding: 5px;
+  border: 0px solid rgb(119, 119, 119);
+  background-color: rgb(242, 242, 242);
+  font-family: Helvetica;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  resize: none;
+}
+
+/* circle */
+.circle {
+	/* round corners */
+	display: block;
+	width: 22px;
+	height: 22px;
+	border-radius: 32px; /* Opera, Chrome */
+	-moz-border-radius: 32px; /* FF */
+	  -webkit-border-radius: 32px;
+	  -webkit-border-bottom-left-radius: 32px;
+	  -webkit-border-bottom-right-radius: 32px;
+	  -webkit-border-top-left-radius: 32px;
+	  -webkit-border-top-right-radius: 32px;
+	  box-shadow: 0px 0px 0px 0px #fff;
+	background-color: #FFFFFF;
+	margin: auto;
+	margin-bottom: auto;
+	margin-top: auto;
+	text-align: center;
+	line-height: 27px;
+	border: 3px solid rgb(220, 220, 220);
+	font-family: Helvetica;
+	font-size: 1em;
+	font-weight: 700;
+	text-align: center;
+	color: rgb(0, 0, 0);
+}
+
+.circle1 {
+	/* round corners */
+	display: block;
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+	margin: auto;
+	margin-bottom: auto;
+	margin-top: auto;
+	text-align: center;
+	line-height: 27px;
+	border: 0px;
+	background: url('circle.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+	font-family: Helvetica;
+	font-size: 1.2em;
+	font-weight: 700;
+	text-align: center;
+	color: rgb(0, 0, 0); 
+}
+
+
+.circle_material {
+	/* round corners */
+	display: block;
+	width: 32px;
+	height: 32px;
+	border-radius: 32px; /* Opera, Chrome */
+	-moz-border-radius: 32px; /* FF */
+	  -webkit-border-radius: 32px;
+	  -webkit-border-bottom-left-radius: 32px;
+	  -webkit-border-bottom-right-radius: 32px;
+	  -webkit-border-top-left-radius: 32px;
+	  -webkit-border-top-right-radius: 32px;
+	  box-shadow: 0px 0px 0px 0px #fff;
+	background-color: #FFFFFF;
+	margin: auto;
+	margin-bottom: auto;
+	margin-top: auto;
+	text-align: center;
+	line-height: 27px;
+	border: 5px solid rgb(200, 200, 200);
+	font-family: Helvetica;
+	font-size: 1.5em;
+	font-weight: 700;
+	text-align: center;
+	color: rgb(0, 0, 0);
+}
+ 
+ 
+.circle_material1 {
+	/* round corners */
+	display: block;
+	width: 45px;
+	height: 45px;
+	background-color: transparent;
+	margin: auto;
+	margin-bottom: auto;
+	margin-top: auto;
+	text-align: center;
+	line-height: 27px;
+	border: 0px;
+	background: url('circle.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+	font-family: Helvetica;
+	font-size: 1.5em;
+	font-weight: 700;
+	text-align: center;
+	color: rgb(0, 0, 0); 
+}
+ 
+.intro {
+	height: 50px;
+	font-family: Helvetica;
+  font-size: 10em;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(0, 0, 0);
+	
+}
+  
+.cellicon {
+	height: 5%;
+	width: 100%;
+	position: relative;
+	background-color: rgb(247, 247, 247);
+	border-left: hidden;
+	border-left: 8px solid #FFFFFF;
+	border-bottom: 2px dotted #FFFFFF;
+}
+  
+.cellicon_material {
+	height: 20%;
+	width: 100%;
+	position: relative;
+	padding: 4px;
+	background-color: rgb(247, 247, 247);
+	border-left: hidden;
+	border-left: 8px solid #FFFFFF;
+	border-bottom: 8px solid rgb(247, 247, 247);
+	border-top: 8px solid rgb(247, 247, 247);
+}
+
+
+.inner_cellicon {
+	height: 5%;
+	background-color: rgb(247, 247, 247);
+	border: 1px solid rgb(247, 247, 247);
+	text-align: center;
+	  margin-top: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+}
+  
+
+  .cellbioglyph {
+	height: 80px;
+	width: 40px;
+	border-left: 8px solid #FFFFFF;
+	margin-top: auto; 
+	margin-bottom: auto;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	vertical-align: middle;
+	background-color: rgb(247, 247, 247);	
+  }
+  
+.last {
+	margin-top: auto; 
+}
+
+.celltitle {
+	height: 60px;
+	vertical-align: middle;
+	text-align: center;
+	background-color: rgb(247, 247, 247);
+	border-left: 8px solid #FFFFFF;
+	border-bottom: 4px solid rgb(230, 230, 230);
+}
+
+.icondescription {
+	height: 30px;
+	border-right: 4px solid #FFFFFF;
+	 border-bottom: 4px solid rgb(220, 220, 220);
+	   -webkit-border-bottom-left-radius: 20px;
+	  -webkit-border-bottom-right-radius: 20px;
+	  box-shadow: 0px 0px 0px 0px #fff;
+}
+
+
+
+.cellnum_1st_row {
+	height: 30px;
+	background-color: rgb(113, 188, 120);
+	font-size: 1em;
+	font-weight: 100;
+	text-align: center;
+	color: rgb(242, 242, 242);
+	border-top: 0px solid #FFFFFF;
+	border-left: 8px solid #FFFFFF;
+	border-right: 8px solid #FFFFFF;
+}
+	
+	.emerald1 {
+	  height: 30px;
+	  width: 30px;
+	font-size: 1em;
+	font-weight: 100;
+	text-align: center;
+	border-top: 0px solid #FFFFFF;
+	border-left: 8px solid #FFFFFF;
+  padding: 0;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #2ecc71;
+  border-bottom: 4px solid #28be68;
+	
+	
+}
+
+.emerald_material {
+	 background: #2ecc71;
+	 height: 4px;
+	 border-left: 8px solid #FFFFFF;
+}
+
+
+	.deepblue {
+	  height: 50px;
+	font-size: 32px;
+	font-weight: 100;
+	text-align: left;
+	border-top: 0px solid #FFFFFF;
+  padding: 0;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #2980b9;
+  border-bottom: 6px solid #2475ab;
+	
+	
+}
+
+
+.belize-hole-flat-button {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 60px;
+  padding: 0;
+  font-size: 22px;
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #2980b9;
+  border: 0;
+  border-bottom: 2px solid #2475ab;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #2475ab;
+  box-shadow: inset 0 -2px #2475ab;
+}
+.belize-hole-flat-button:active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+	
+.cellnum_2nd_row {
+	height: 10%;
+	background-color: rgb(113, 188, 120);
+	font-size: 1em;
+	font-weight: 700;
+	text-align: center;
+	color: rgb(242, 242, 242);
+	border-top: 20px solid #FFFFFF;
+}
+
+.left_title {
+	height: 20px;
+	
+}
+
+.button {
+	text-align: center;
+	width: 80px;
+	height: 50px;
+	line-height: 25px;
+	background-color: transparent;
+	font-size: 10pt; /* needed for cloned object */
+	/* round corners */
+	border-radius: 4px; /* Opera, Chrome */
+	-moz-border-radius: 4px; /* FF */
+	margin-bottom: 2px;
+}
+
+
+table
+{
+    border-collapse: separate;
+}
+
+tr th:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: "Step "counter(Serial); /* Display the counter */
+}
+
+
+.emerald {
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  height: 60px;
+  padding: 0;
+  font-size: 22px;
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #2ecc71;
+  border: 0;
+  border-bottom: 2px solid #28be68;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #28be68;
+  box-shadow: inset 0 -2px #28be68;
+}
+
+.experiment_title {
+	border: 0px;
+	width: 98%;
+	font: 400 2em Helvetica;
+	color: rgb(200, 200, 200);
+	
+}
+
+.purpose_input {
+  display: block;
+  float: left;
+  width: 97%;
+  height: auto;
+  padding: 0 10px;
+  background-color: #FFFFFF;
+  font: 400 0.813em/1.38 Helvetica;
+  color: rgb(0, 0, 0);
+  Border: 4px solid #FFFFFF;
+  border-bottom: 10px solid #FFFFFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+.notepad, .notepad:before, .notepad:after {
+    background-color: #FFFFFF;
+    background-image: -webkit-linear-gradient(#f6abca 1px, transparent 1px), -webkit-linear-gradient(#f6abca 1px, transparent 1px), -webkit-linear-
+gradient(#e8e8e8 1px, transparent 1px);
+    background-image: -moz-linear-gradient(#f6abca 1px, transparent 1px), -moz-linear-gradient(#f6abca 1px, transparent 1px), -moz-linear-gradient
+(#e8e8e8 1px, transparent 1px);
+    background-image: -o-linear-gradient(#f6abca 1px, transparent 1px), -o-linear-gradient(#f6abca 1px, transparent 1px), -o-linear-gradient(#e8e8e8 
+1px, transparent 1px);
+    background-image: linear-gradient(#f6abca 1px, transparent 1px), linear-gradient(#f6abca 1px, transparent 1px), linear-gradient(#e8e8e8 1px,
+transparent 1px);
+    background-size: 1px 1px, 1px 1px, 23px 23px;
+    background-repeat: repeat-y, repeat-y, repeat;
+    background-position: 22px 0, 24px 0, 0 50px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 0 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 0 4px rgba(0, 0, 0, 0.5);
+}
+.notepad {
+    position: relative;
+    margin: 5px auto;
+    padding: 0 23px 14px 35px;
+    width: 300px;
+    line-height: 23px;
+    font-size: 11px;
+    color: #666;
+}
+.notepad p, .notepad blockquote {
+    margin-bottom: 23px;
+}
+.notepad :last-child {
+    margin-bottom: 0;
+}
+.notepad:before, .notepad:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    left: 3px;
+    right: 3px;
+    margin-top: -2px;
+    height: 4px;
+    background-size: 1px 1px, 1px 1px, 0 0;
+}
+.notepad:before {
+    z-index: -2;
+    left: 6px;
+    right: 6px;
+    height: 6px;
+    background-color: #eee;
+}
+.notepad-heading {
+    position: relative;
+    margin: 0 -23px 14px -35px;
+    height: 38px;
+    background: #14466a;
+    border-radius: 2px 2px 0 0;
+    background-image: -webkit-linear-gradient(top, #226797, #0c3452);
+    background-image: -moz-linear-gradient(top, #226797, #0c3452);
+    background-image: -o-linear-gradient(top, #226797, #0c3452);
+    background-image: linear-gradient(to bottom, #226797, #0c3452);
+    -webkit-box-shadow: inset 0 1px #2f81ad, 0 2px 1px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.5), 0 1px black;
+    box-shadow: inset 0 1px #2f81ad, 0 2px 1px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.5), 0 1px black;
+}
+.notepad-heading > h2 {
+    line-height: 36px;
+    font-size: 14px;
+    color: #FFFFFF;
+    text-align: center;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.7);
+}
+.notepad-heading:before, .notepad-heading:after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 1px;
+    right: 1px;
+    height: 0;
+    border-top: 1px dashed #617c90;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+.notepad-heading:after {
+    bottom: 3px;
+    border-color: #071c2c;
+    border-color: rgba(0, 0, 0, 0.5);
+}

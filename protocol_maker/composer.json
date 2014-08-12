@@ -1,0 +1,5 @@
+{
+    "require": {
+                "doctrine/orientdb-odm": "dev-master"
+    }
+}

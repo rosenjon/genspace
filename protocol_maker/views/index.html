@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta name="author" content="Eric Fernandez and Darko Bunic"/>
+		<meta name="description" content="Bioglyphics"/>
+		<meta name="viewport" content="width=device-width, user-scalable=no"/><!-- "position: fixed" fix for Android 2.2+ -->
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="js/redips-drag-min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>		
+		<title>PROCEDURE</title>
+	</head>
+	<body>
+		<!-- tables inside this DIV could have draggable content -->
+		
+		
+		
+		<div id="drag">
+			
+			<div><input class="experiment_title" type="text" placeholder="Experiment 1"></input></div>
+			<div class=headline>Purpose</div>
+			<div class=purpose_padding><textarea class="purpose_input" type="text" placeholder="type your purpose here..." rows=5></textarea></div>
+			
+			<div class=headline>Materials</div>
+			
+			<!-- left container -->
+			<div id="left">
+				<table id="33">
+					
+				<td colspan=20 class="trash">Drag the icons below to a box with a labeled material. Drag icons here to delete.</td>
+				
+					<tr>
+
+                <?php
+                        foreach($materials as $material){ ?>
+    						<td class="icons">
+    							<div id="ba" class="drag clone test_tube" style="background: url('./img/<?php  echo $material->image_url;?>')">
+    						</td>
+                <?php    }
+                ?>
+					</tr>
+                    <tr>
+                <?php
+                        foreach($materials as $material){ ?>
+						    <td class="icondescription"><?php echo $material->name; ?></td>
+                <?php    }
+                ?>
+                    </tr>
+				</table>
+				
+			</div>
+			<!-- right container -->
+			<div id="right">
+			<table id="table4">
+			</div>
+			</table>
+		</div>
+		
+	
+		<div class=headline>Procedure</div>
+		
+			
+			<!-- left container -->
+			<div id="left">
+				<table id="33">
+					
+				<td colspan=20 class="trash">Drag icons below to one of the steps, type in the symbol for each material and the quantity. Drag icons here to delete.</td>
+					<tr>
+                        <?php
+						    foreach($tools as $tool) { ?>
+        						<td class="icons">
+        							<div id="bc" class="drag clone shake" style="background: url('./img/<?php echo $tool->image_url; ?>')"></div>
+        						</td>
+			            <?php } ?>
+					</tr>
+					
+                    <tr>
+                        <?php
+						    foreach($tools as $tool) { ?>
+                                    <td class="icondescription"><?php echo $tool->name; ?></td>
+			            <?php } ?>
+                    </tr>
+
+					
+				</table>
+				
+			</div>
+			<!-- right container -->
+			<div id="right">
+			<table id="table4">
+					
+					
+					<tr id="step_header">
+						<th id="cellnumber" class="emerald1"></th>
+					</tr>
+						
+				
+			
+					<tr id="step_background">
+						<td id="td1" class="only cellbioglyph"></td>
+					</tr>
+					<tr id="step_fields">
+						<td id="td1_mat" class="cellicon">
+							<table>
+							<tr>
+								<td class="inner_cellicon"><div class="111"><input id="td1_from" class="circle1" placeholder="1" type="text"></div></td>
+								<td class="inner_cellicon"><div class="111"><input id="td1_to" class="circle1" placeholder="A" type="text"></div></td>
+							</tr>
+							</table>
+						</td>
+					</tr>
+				
+				<tr id="units_container">
+						<td id="td1_quant" class="celltitle"><input class="_input_condition" placeholder="25" type="text"><form action=""><select name="units"><option value="µL">µL</option><option value="mL">mL</option><option value="sec">sec</option><option value="min">min</option><option value="hours">hours</option></select></form></div></td>
+					</tr>
+			</div>
+			</table>
+		</div>
+	
+	</body>
+	
+	<table class="trashtable">
+				<tr>
+				<td class="trash">PRINT</td>
+				</tr>	
+</html>
